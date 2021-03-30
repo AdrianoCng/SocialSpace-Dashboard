@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./app.css";
 
-function App() {
+// Components
+import Nav from "./Components/Nav/Nav";
+import SideNav from "./Components/SideNav/SideNav";
+import Main from "./Components/Main/Main";
+
+const App = () => {
+  const [toggle, setToggle] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Nav setToggle={setToggle} />
+
+      <div className={`wrapper ${toggle && "sidenav-toggled"}`}>
+        <SideNav />
+        <Main />
+      </div>
+
+    </>
   );
 }
 
